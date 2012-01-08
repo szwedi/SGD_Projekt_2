@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "Lab.h"
 
+using namespace std;
 #define MAX_LOADSTRING 100
 
 // Global Variables:
@@ -156,7 +157,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		}
 		break;
 	case WM_PAINT:
+	
 		hdc = BeginPaint(hWnd, &ps);
+		int g,h,i,j;
+		int tab[10][10];
+		for (g=0; g<=9; g++){
+		for (h=0; h<=9; h++)
+		tab[g][h]=0;
+		g=0;
+		h=0;
+		}
 		// TODO: 
 		//rysowanie kratek
 		MoveToEx(hdc, 250, 10, NULL);
@@ -164,12 +174,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		LineTo(hdc, 1050, 810);
 		LineTo(hdc, 250, 810);
 		LineTo(hdc, 250, 10);
-		for(int i=1;i<10;i++){
+		for(i=1;i<10;i++){
 		MoveToEx(hdc, 250+(i*80), 10, NULL);
 		LineTo(hdc, 250+(i*80), 810);
 		}
 		MoveToEx(hdc, 250, 10, NULL);
-		for(int j=1;j<10;j++){
+		for(j=1;j<10;j++){
 		MoveToEx(hdc, 250, 10+(j*80), NULL);
 		LineTo(hdc, 1050, 10+(j*80));
 		}
@@ -178,24 +188,32 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		int x,y;
 		x=250;
 		y=10;
-		for(int h=0;h<10;h++){
+		for(int u=0;u<10;u++)
+		{
 		
 		
-		for(int l=1;l<=10;l++){
-		MoveToEx(hdc, x, -70+(l*80), NULL);
-		int z=rand()%2;
-		if(z==1){
-		LineTo(hdc, x+80, y+80);
-		MoveToEx(hdc, x+80, y, NULL);
-		LineTo(hdc, x, y+80);
-		MoveToEx(hdc, x, y, NULL);
+		for(int l=1;l<=10;l++)
+		{
+			MoveToEx(hdc, x, -70+(l*80), NULL);
+			int z=rand()%2;
+			if(z==1){
+						LineTo(hdc, x+80, y+80);
+						MoveToEx(hdc, x+80, y, NULL);
+						LineTo(hdc, x, y+80);
+						MoveToEx(hdc, x, y, NULL);
+						tab[g][h]=1;
+		
+					}
+			h++;
+			y=y+80;
 		}
-		y=y+80;
-		}
+		h=0;
 		y=10;
 		x=x+80;
-		}
+		g++;
 
+		}
+		//
 		
 
 
