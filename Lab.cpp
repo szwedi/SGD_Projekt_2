@@ -157,16 +157,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		}
 		break;
 	case WM_PAINT:
-	
+		BOOL WINAPI AllocConsole(void);
 		hdc = BeginPaint(hWnd, &ps);
 		int g,h,i,j;
 		int tab[10][10];
+		int xm,ym;
+		int llx,lly;
 		for (g=0; g<=9; g++){
 		for (h=0; h<=9; h++)
 		tab[g][h]=0;
+		}
 		g=0;
 		h=0;
-		}
+		
 		// TODO: 
 		//rysowanie kratek
 		MoveToEx(hdc, 250, 10, NULL);
@@ -195,15 +198,18 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		for(int l=1;l<=10;l++)
 		{
 			MoveToEx(hdc, x, -70+(l*80), NULL);
-			int z=rand()%2;
+			int z=rand()%3;
 			if(z==1){
+				if(g==0 && h==0)continue;
 						LineTo(hdc, x+80, y+80);
 						MoveToEx(hdc, x+80, y, NULL);
 						LineTo(hdc, x, y+80);
 						MoveToEx(hdc, x, y, NULL);
 						tab[g][h]=1;
+						
 		
 					}
+			
 			h++;
 			y=y+80;
 		}
@@ -213,9 +219,40 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		g++;
 
 		}
-		//
-		
+		//ludzik
+		llx=280;
+		lly=30;
+		//glowa
 
+		MoveToEx(hdc, llx, lly, NULL);
+		LineTo(hdc, llx+20, lly);
+		LineTo(hdc, llx+20, lly+20);
+		LineTo(hdc, llx, lly+20);
+		LineTo(hdc, llx, lly);
+		//rece
+		MoveToEx(hdc, llx+10, lly+20, NULL);
+		LineTo(hdc, llx+10, lly+40);
+		LineTo(hdc, llx+20, lly+55);
+		MoveToEx(hdc, llx, lly+30, NULL);
+		LineTo(hdc, llx+20,lly+30);
+		//nogi
+		MoveToEx(hdc, llx+10, lly+40, NULL);
+		LineTo(hdc, llx, lly+55);
+		//oczy
+		MoveToEx(hdc, llx+5, lly+7, NULL);
+		LineTo(hdc, llx+7, lly+7);
+		MoveToEx(hdc, llx+15, lly+7, NULL);
+		LineTo(hdc, llx+17, lly+7);
+
+		case WM_LBUTTONDOWN:
+	{
+    HDC hdc = GetDC( hWnd );
+    xm=LOWORD( lParam );
+	ym=HIWORD( lParam );
+	SetPixel( hdc, LOWORD( lParam ), HIWORD( lParam ), RGB( 255, 0, 0 ) );
+    ReleaseDC( hWnd, hdc );
+	}
+	
 
 		EndPaint(hWnd, &ps);
 		break;
