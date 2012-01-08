@@ -165,6 +165,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		int nrkratki;
 		int xdocelowy,ydocelowy;
 		nrkratki=1;
+		xdocelowy=280;
+		ydocelowy=30;
 		int llx,lly;
 		for (g=0; g<=9; g++){
 		for (h=0; h<=9; h++)
@@ -256,6 +258,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	ym=HIWORD( lParam );
 	if(xm==0)xm=280;
 	if(ym==0)ym=30;
+
 	//kratki 1-10
 	if(250<=xm<330 && 10<=ym<90){nrkratki=1;xdocelowy=290;ydocelowy=30;}
 	if(330<=xm<410 && 10<=ym<90){nrkratki=2;xdocelowy=370;ydocelowy=30;}
@@ -370,14 +373,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	HDC hdc = GetDC( hWnd );
 	SetPixel( hdc, xm, ym, RGB( 255, 0, 0 ) );
 		
-		for(o=1;o<=5;o++){
-		if(o==1) SetPixel( hdc, xm+5, ym, RGB( 255, 0, 0 ) );
-		if(o==2) SetPixel( hdc, xm+10, ym, RGB( 255, 0, 0 ) );
-		if(o==3) SetPixel( hdc, xm+15, ym, RGB( 255, 0, 0 ) );
-		if(o==4) SetPixel( hdc, xm+20, ym, RGB( 255, 0, 0 ) );
-		if(o==5) SetPixel( hdc, xm+25, ym, RGB( 255, 0, 0 ) );
+		for(llx=280;llx<xdocelowy;llx=llx+80){
 		Sleep( 50 );
-		llx=llx+(((80*nrkratki)-llx)/5);
+		
 		
 		//glowa
 		MoveToEx(hdc, llx, lly, NULL);
