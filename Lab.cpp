@@ -162,6 +162,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		int g,h,i,j,o;
 		int tab[10][10];
 		int xm,ym;
+		int nrkratki;
+		nrkratki=1;
 		int llx,lly;
 		for (g=0; g<=9; g++){
 		for (h=0; h<=9; h++)
@@ -248,15 +250,134 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	
 	case WM_LBUTTONDOWN:
 	{
+	
     xm=LOWORD( lParam );
 	ym=HIWORD( lParam );
+	if(xm==0)xm=280;
+	if(ym==0)ym=30;
+	//kratki 1-10
+	if(250<=xm<330 && 10<=ym<90)nrkratki=1;
+	if(330<=xm<410 && 10<=ym<90)nrkratki=2;
+	if(410<=xm<490 && 10<=ym<90)nrkratki=3;
+	if(490<=xm<570 && 10<=ym<90)nrkratki=4;
+	if(570<=xm<650 && 10<=ym<90)nrkratki=5;
+	if(650<=xm<730 && 10<=ym<90)nrkratki=6;
+	if(730<=xm<810 && 10<=ym<90)nrkratki=7;
+	if(810<=xm<890 && 10<=ym<90)nrkratki=8;
+	if(890<=xm<970 && 10<=ym<90)nrkratki=9;
+	if(970<=xm<1050 && 10<=ym<90)nrkratki=10;
+	//kartki 11-20
+	if(250<=xm<330 && 90<=ym<170)nrkratki=11;
+	if(330<=xm<410 && 90<=ym<170)nrkratki=12;
+	if(410<=xm<490 && 90<=ym<170)nrkratki=13;
+	if(490<=xm<570 && 90<=ym<170)nrkratki=14;
+	if(570<=xm<650 && 90<=ym<170)nrkratki=15;
+	if(650<=xm<730 && 90<=ym<170)nrkratki=16;
+	if(730<=xm<810 && 90<=ym<170)nrkratki=17;
+	if(810<=xm<890 && 90<=ym<170)nrkratki=18;
+	if(890<=xm<970 && 90<=ym<170)nrkratki=19;
+	if(970<=xm<1050 && 90<=ym<170)nrkratki=20;
+	//kratki 21-30
+	if(250<=xm<330 && 170<=ym<250)nrkratki=21;
+	if(330<=xm<410 && 170<=ym<250)nrkratki=22;
+	if(410<=xm<490 && 170<=ym<250)nrkratki=23;
+	if(490<=xm<570 && 170<=ym<250)nrkratki=24;
+	if(570<=xm<650 && 170<=ym<250)nrkratki=25;
+	if(650<=xm<730 && 170<=ym<250)nrkratki=26;
+	if(730<=xm<810 && 170<=ym<250)nrkratki=27;
+	if(810<=xm<890 && 170<=ym<250)nrkratki=28;
+	if(890<=xm<970 && 170<=ym<250)nrkratki=29;
+	if(970<=xm<1050 && 170<=ym<250)nrkratki=30;
+	//kratki 31-40
+	if(250<=xm<330 && 250<=ym<330)nrkratki=31;
+	if(330<=xm<410 && 250<=ym<330)nrkratki=32;
+	if(410<=xm<490 && 250<=ym<330)nrkratki=33;
+	if(490<=xm<570 && 250<=ym<330)nrkratki=34;
+	if(570<=xm<650 && 250<=ym<330)nrkratki=35;
+	if(650<=xm<730 && 250<=ym<330)nrkratki=36;
+	if(730<=xm<810 && 250<=ym<330)nrkratki=37;
+	if(810<=xm<890 && 250<=ym<330)nrkratki=38;
+	if(890<=xm<970 && 250<=ym<330)nrkratki=39;
+	if(970<=xm<1050 && 250<=ym<330)nrkratki=40;
+	//kratki 41-50
+	if(250<=xm<330 && 330<=ym<410)nrkratki=41;
+	if(330<=xm<410 && 330<=ym<410)nrkratki=42;
+	if(410<=xm<490 && 330<=ym<410)nrkratki=43;
+	if(490<=xm<570 && 330<=ym<410)nrkratki=44;
+	if(570<=xm<650 && 330<=ym<410)nrkratki=45;
+	if(650<=xm<730 && 330<=ym<410)nrkratki=46;
+	if(730<=xm<810 && 330<=ym<410)nrkratki=47;
+	if(810<=xm<890 && 330<=ym<410)nrkratki=48;
+	if(890<=xm<970 && 330<=ym<410)nrkratki=49;
+	if(970<=xm<1050 && 330<=ym<410)nrkratki=50;
+	//kratki 51-60
+	if(250<=xm<330 && 410<=ym<490)nrkratki=51;
+	if(330<=xm<410 && 410<=ym<490)nrkratki=52;
+	if(410<=xm<490 && 410<=ym<490)nrkratki=53;
+	if(490<=xm<570 && 410<=ym<490)nrkratki=54;
+	if(570<=xm<650 && 410<=ym<490)nrkratki=55;
+	if(650<=xm<730 && 410<=ym<490)nrkratki=56;
+	if(730<=xm<810 && 410<=ym<490)nrkratki=57;
+	if(810<=xm<890 && 410<=ym<490)nrkratki=58;
+	if(890<=xm<970 && 410<=ym<490)nrkratki=59;
+	if(970<=xm<1050 && 410<=ym<490)nrkratki=60;
+	//kratki 61-70
+	if(250<=xm<330 && 490<=ym<570)nrkratki=61;
+	if(330<=xm<410 && 490<=ym<570)nrkratki=62;
+	if(410<=xm<490 && 490<=ym<570)nrkratki=63;
+	if(490<=xm<570 && 490<=ym<570)nrkratki=64;
+	if(570<=xm<650 && 490<=ym<570)nrkratki=65;
+	if(650<=xm<730 && 490<=ym<570)nrkratki=66;
+	if(730<=xm<810 && 490<=ym<570)nrkratki=67;
+	if(810<=xm<890 && 490<=ym<570)nrkratki=68;
+	if(890<=xm<970 && 490<=ym<570)nrkratki=69;
+	if(970<=xm<1050 && 490<=ym<570)nrkratki=70;
+	//kratki 71-80
+	if(250<=xm<330 && 570<=ym<650)nrkratki=71;
+	if(330<=xm<410 && 570<=ym<650)nrkratki=72;
+	if(410<=xm<490 && 570<=ym<650)nrkratki=73;
+	if(490<=xm<570 && 570<=ym<650)nrkratki=74;
+	if(570<=xm<650 && 570<=ym<650)nrkratki=75;
+	if(650<=xm<730 && 570<=ym<650)nrkratki=76;
+	if(730<=xm<810 && 570<=ym<650)nrkratki=77;
+	if(810<=xm<890 && 570<=ym<650)nrkratki=78;
+	if(890<=xm<970 && 570<=ym<650)nrkratki=79;
+	if(970<=xm<1050 && 570<=ym<650)nrkratki=80;
+	//kratki 81-90
+	if(250<=xm<330 && 650<=ym<730)nrkratki=81;
+	if(330<=xm<410 && 650<=ym<730)nrkratki=82;
+	if(410<=xm<490 && 650<=ym<730)nrkratki=83;
+	if(490<=xm<570 && 650<=ym<730)nrkratki=84;
+	if(570<=xm<650 && 650<=ym<730)nrkratki=85;
+	if(650<=xm<730 && 650<=ym<730)nrkratki=86;
+	if(730<=xm<810 && 650<=ym<730)nrkratki=87;
+	if(810<=xm<890 && 650<=ym<730)nrkratki=88;
+	if(890<=xm<970 && 650<=ym<730)nrkratki=89;
+	if(970<=xm<1050 && 650<=ym<730)nrkratki=90;
+	//kratki 91-100
+	if(250<=xm<330 && 730<=ym<810)nrkratki=91;
+	if(330<=xm<410 && 730<=ym<810)nrkratki=92;
+	if(410<=xm<490 && 730<=ym<810)nrkratki=93;
+	if(490<=xm<570 && 730<=ym<810)nrkratki=94;
+	if(570<=xm<650 && 730<=ym<810)nrkratki=95;
+	if(650<=xm<730 && 730<=ym<810)nrkratki=96;
+	if(730<=xm<810 && 730<=ym<810)nrkratki=97;
+	if(810<=xm<890 && 730<=ym<810)nrkratki=98;
+	if(890<=xm<970 && 730<=ym<810)nrkratki=99;
+	if(970<=xm<1050 && 730<=ym<810)nrkratki=100;
+
 	HDC hdc = GetDC( hWnd );
 	SetPixel( hdc, xm, ym, RGB( 255, 0, 0 ) );
-    
-		llx=500;
-		for(o=1;o<=5;o++){
 		
-		llx=llx+(xm/5);
+		for(o=1;o<=5;o++){
+		if(o==1) SetPixel( hdc, xm+5, ym, RGB( 255, 0, 0 ) );
+		if(o==2) SetPixel( hdc, xm+10, ym, RGB( 255, 0, 0 ) );
+		if(o==3) SetPixel( hdc, xm+15, ym, RGB( 255, 0, 0 ) );
+		if(o==4) SetPixel( hdc, xm+20, ym, RGB( 255, 0, 0 ) );
+		if(o==5) SetPixel( hdc, xm+25, ym, RGB( 255, 0, 0 ) );
+		Sleep( 50 );
+		llx=llx+((xm-llx)/5);
+		
 		//glowa
 		MoveToEx(hdc, llx, lly, NULL);
 		LineTo(hdc, llx+20, lly);
@@ -280,12 +401,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	
 		}
 
-	ReleaseDC( hWnd, hdc );
 	
+	ReleaseDC( hWnd, hdc );
 
 
 	}
-
+	
 		EndPaint(hWnd, &ps);
 		break;
 	case WM_DESTROY:
