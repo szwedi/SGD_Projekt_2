@@ -157,9 +157,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		}
 		break;
 	case WM_PAINT:
-		BOOL WINAPI AllocConsole(void);
+		
 		hdc = BeginPaint(hWnd, &ps);
-		int g,h,i,j;
+		int g,h,i,j,o;
 		int tab[10][10];
 		int xm,ym;
 		int llx,lly;
@@ -244,15 +244,47 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		MoveToEx(hdc, llx+15, lly+7, NULL);
 		LineTo(hdc, llx+17, lly+7);
 
-		case WM_LBUTTONDOWN:
+
+	
+	case WM_LBUTTONDOWN:
 	{
-    HDC hdc = GetDC( hWnd );
     xm=LOWORD( lParam );
 	ym=HIWORD( lParam );
-	SetPixel( hdc, LOWORD( lParam ), HIWORD( lParam ), RGB( 255, 0, 0 ) );
-    ReleaseDC( hWnd, hdc );
-	}
+	HDC hdc = GetDC( hWnd );
+	SetPixel( hdc, xm, ym, RGB( 255, 0, 0 ) );
+    
+		llx=500;
+		for(o=1;o<=5;o++){
+		
+		llx=llx+(xm/5);
+		//glowa
+		MoveToEx(hdc, llx, lly, NULL);
+		LineTo(hdc, llx+20, lly);
+		LineTo(hdc, llx+20, lly+20);
+		LineTo(hdc, llx, lly+20);
+		LineTo(hdc, llx, lly);
+		//rece
+		MoveToEx(hdc, llx+10, lly+20, NULL);
+		LineTo(hdc, llx+10, lly+40);
+		LineTo(hdc, llx+20, lly+55);
+		MoveToEx(hdc, llx, lly+30, NULL);
+		LineTo(hdc, llx+20,lly+30);
+		//nogi
+		MoveToEx(hdc, llx+10, lly+40, NULL);
+		LineTo(hdc, llx, lly+55);
+		//oczy
+		MoveToEx(hdc, llx+5, lly+7, NULL);
+		LineTo(hdc, llx+7, lly+7);
+		MoveToEx(hdc, llx+15, lly+7, NULL);
+		LineTo(hdc, llx+17, lly+7);
 	
+		}
+
+	ReleaseDC( hWnd, hdc );
+	
+
+
+	}
 
 		EndPaint(hWnd, &ps);
 		break;
@@ -284,3 +316,5 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 	}
 	return (INT_PTR)FALSE;
 }
+
+
